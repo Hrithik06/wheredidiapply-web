@@ -1,19 +1,25 @@
 import type { FC } from "react";
 import { Link } from "react-router";
-
+import { Button } from "@/components/ui/button";
 const NavBar: FC = () => {
   return (
     <div>
       <nav>
         <ul>
           <li>
-            <Link to={"/"}>Home</Link>
+            <Button className="bg-violet-600">
+              <Link to={"/"}>Home</Link>
+            </Button>
           </li>
           <li>
-            <Link to={"/dashboard"}>Dashboard</Link>
+            <Button>
+              <Link to={"/dashboard"}>Dashboard</Link>
+            </Button>
           </li>
           <li>
-            <Link to={"/login"}>Login</Link>
+            <Button>
+              <Link to={"/login"}>Login</Link>
+            </Button>
           </li>
         </ul>
       </nav>
