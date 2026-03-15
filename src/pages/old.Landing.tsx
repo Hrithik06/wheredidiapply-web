@@ -1,14 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import Logo from "@/components/ui/Logo";
-
-// ─── Brand accents — identical in both themes, warmth is always preserved ────
-const BRAND = {
-  gold: "#FFC947",
-  coral: "#FF6B6B",
-  mint: "#06D6A0",
-  lavender: "#A78BFA",
-  dark: "#1E2D5F",
-};
+import { BRAND } from "@/constants/brand";
+import StatItem from "@/components/StatItem";
+import FaqItem from "@/features/landing/components/FaqItem";
 
 // ─── Theme tokens ─────────────────────────────────────────────────────────────
 const THEMES = {
@@ -156,43 +150,79 @@ const FAQ = [
 ];
 
 // ─── Animated counter ─────────────────────────────────────────────────────────
-const useCountUp = (target, duration = 1400, start = false) => {
-  const [val, setVal] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    const num = parseFloat(target.replace(/[^0-9.]/g, ""));
-    if (!num) return;
-    let t0 = null;
-    const tick = (ts) => {
-      if (!t0) t0 = ts;
-      const p = Math.min((ts - t0) / duration, 1);
-      setVal(Math.floor(p * num));
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [start, target, duration]);
-  return val.toLocaleString() + target.replace(/[0-9.,]/g, "").trim();
-};
+// const useCountUp = (target: string, duration = 1400, start = false) => {
+//   const [val, setVal] = useState(0);
+//   useEffect(() => {
+//     if (!start) return;
+//     const num = parseFloat(target.replace(/[^0-9.]/g, ""));
+//     if (!num) return;
+//     let t0: number | null = null;
+//     const tick = (ts: number) => {
+//       if (!t0) t0 = ts;
+//       const p = Math.min((ts - t0) / duration, 1);
+//       setVal(Math.floor(p * num));
+//       if (p < 1) requestAnimationFrame(tick);
+//     };
+//     requestAnimationFrame(tick);
+//   }, [start, target, duration]);
+//   return val.toLocaleString() + target.replace(/[0-9.,]/g, "").trim();
+// };
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-const StatItem = ({ value, label, inView }) => {
-  const displayed = useCountUp(value, 1400, inView);
-  return (
-    <div className="text-center px-6">
-      <div
-        className="text-4xl font-black tracking-tight"
-        style={{ color: BRAND.gold }}
-      >
-        {inView ? displayed : "0"}
-      </div>
-      <div className="text-sm font-semibold text-slate-400 mt-1 max-w-32 mx-auto leading-snug">
-        {label}
-      </div>
-    </div>
-  );
-};
+// const StatItem = ({
+//   value,
+//   label,
+//   inView,
+// }: {
+//   value: string;
+//   label: string;
+//   inView: boolean;
+// }) => {
+//   const displayed = useCountUp(value, 1400, inView);
+//   return (
+//     <div className="text-center px-6">
+//       <div
+//         className="text-4xl font-black tracking-tight"
+//         style={{ color: BRAND.gold }}
+//       >
+//         {inView ? displayed : "0"}
+//       </div>
+//       <div className="text-sm font-semibold text-slate-400 mt-1 max-w-32 mx-auto leading-snug">
+//         {label}
+//       </div>
+//     </div>
+//   );
+// };
 
-const FaqItem = ({ q, a, t }) => {
+// const StatItem = ({
+//   value,
+//   label,
+//   inView,
+// }: {
+//   value: string;
+//   label: string;
+//   inView: boolean;
+// }) => {
+//   const displayed = useCountUp(value, 1400, inView);
+//   return (
+//     <div className="text-center px-6">
+//       <div
+//         className="text-4xl font-black tracking-tight"
+//         style={{ color: BRAND.gold }}
+//       >
+//         {inView ? displayed : "0"}
+//       </div>
+//       <div
+//         className="text-sm font-semibold mt-1 max-w-32 mx-auto leading-snug"
+//         style={{ color: "var(--muted)" }}
+//       >
+//         {label}
+//       </div>
+//     </div>
+//   );
+// };
+
+const FaqItem1 = ({ q, a, t }) => {
   const [open, setOpen] = useState(false);
   return (
     <div
@@ -210,7 +240,7 @@ const FaqItem = ({ q, a, t }) => {
           {q}
         </span>
         <span
-          className="text-xl flex-shrink-0 ml-4 transition-transform duration-300"
+          className="text-xl shrink-0 ml-4 transition-transform duration-300"
           style={{
             transform: open ? "rotate(45deg)" : "rotate(0deg)",
             color: BRAND.coral,
@@ -726,7 +756,7 @@ export default function Landing() {
                 }}
               >
                 <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0"
                   style={{
                     background: item.color + (isMidnight ? "18" : "22"),
                   }}
@@ -826,9 +856,14 @@ export default function Landing() {
         </div>
         <div className="space-y-3">
           {FAQ.map((f, i) => (
-            <FaqItem key={i} q={f.q} a={f.a} t={t} />
+            <FaqItem1 key={i} q={f.q} a={f.a} t={t} />
           ))}
         </div>
+        {/* <div className="space-y-3">
+          {FAQ.map((f, i) => (
+            <FaqItem key={i} q={f.q} a={f.a} />
+          ))}
+        </div> */}
       </section>
 
       {/* ── Final CTA ────────────────────────────────────────────────── */}

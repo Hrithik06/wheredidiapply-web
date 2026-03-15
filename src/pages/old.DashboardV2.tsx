@@ -370,12 +370,12 @@ export default function DashboardV2() {
 
       {/* ── Sidebar ───────────────────────────────────────────────────────── */}
       <aside
-        className={`w-56 ${t.sidebarBg} flex flex-col py-6 flex-shrink-0 sticky top-0 h-screen transition-colors duration-500`}
+        className={`w-56 ${t.sidebarBg} flex flex-col py-6 shrink-0 sticky top-0 h-screen transition-colors duration-500`}
       >
         {/* Brand */}
         <div className="flex items-center gap-3 px-5 pb-7">
           {/* <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0 shadow-lg"
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-xl shrink-0 shadow-lg"
             style={{
               background: `linear-gradient(135deg,${BRAND.gold},${BRAND.coral})`,
             }}
@@ -566,7 +566,7 @@ export default function DashboardV2() {
 
           {/* Trophy card */}
           <div
-            className="w-48 flex-shrink-0 rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden offer-glow"
+            className="w-48 shrink-0 rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden offer-glow"
             style={{ background: `linear-gradient(135deg,#1E2D5F,#2D3F7A)` }}
           >
             <div
@@ -684,7 +684,7 @@ export default function DashboardV2() {
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-3">
                       <span
-                        className={`w-9 h-9 rounded-xl flex items-center justify-center text-lg flex-shrink-0 ${isMidnight ? "bg-slate-800" : "bg-amber-50"}`}
+                        className={`w-9 h-9 rounded-xl flex items-center justify-center text-lg shrink-0 ${isMidnight ? "bg-slate-800" : "bg-amber-50"}`}
                       >
                         {job.logo}
                       </span>

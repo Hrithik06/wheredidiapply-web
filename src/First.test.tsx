@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { First } from "./First";
 import { render, screen } from "@testing-library/react";
 describe("First tests", () => {
